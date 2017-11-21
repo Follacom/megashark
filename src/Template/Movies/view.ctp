@@ -1,4 +1,4 @@
-<?php
+bin<?php
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Movie $movie
@@ -37,6 +37,10 @@
         <tr>
             <th scope="row"><?= __('Modified') ?></th>
             <td><?= h($movie->modified) ?></td>
+        </tr>
+        <tr>
+            <th scope="row"><?= __('Release') ?></th>
+            <td><?= h($movie->release) ?></td>
         </tr>
     </table>
     <div class="row">
