@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use \DateTime;
 
 /**
  * Rooms Controller
@@ -34,12 +35,61 @@ class RoomsController extends AppController
      */
     public function view($id = null)
     {
+        $now = new DateTime(date('Y-m-d'));
+        $day = $now->format('D');
+        $week = $now->format('W');
+        $year = $now->format('Y');
+        
         $room = $this->Rooms->get($id, [
             'contain' => ['Showtimes']
         ]);
-
+        
+        $showtimes = $this->Rooms->Showtimes
+            ->find()
+            ->where(['room_id' => $id],['start' => $week],['start' => $year])
+            ->contain(['Movies']);
+        
+        $showtimesWeek=[
+            1=>[
+                1=>[],
+                2=>[],
+                3=>[],
+                ],
+            2=>[
+                1=>[],
+                2=>[],
+                3=>[],
+                ],
+            3=>[
+                1=>[],
+                2=>[],
+                3=>[],
+                ],
+            4=>[
+                1=>[],
+                2=>[],
+                3=>[],
+                ],
+            5=>[
+                1=>[],
+                2=>[],
+                3=>[],
+                ],
+            6=>[
+                1=>[],
+                2=>[],
+                3=>[],
+                ],
+            7=>[
+                1=>[],
+                2=>[],
+                3=>[],
+                ],
+        ];         
         $this->set('room', $room);
+        $this->set('showtimes',$showtimes);
         $this->set('_serialize', ['room']);
+        $this->set('_serialize', ['showtimes']);
     }
 
     /**

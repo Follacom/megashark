@@ -46,30 +46,17 @@
     <h4><?= __('Related Showtimes') ?></h4>
     <table>
         <tr>
-            <th scope="col"><?= __('Id') ?></th>
-            <th scope="col"><?= __('Movie Id') ?></th>
-            <th scope="col"><?= __('Room Id') ?></th>
-            <th scope="col"><?= __('Start') ?></th>
-            <th scope="col"><?= __('End') ?></th>
-            <th scope="col"><?= __('Created') ?></th>
-            <th scope="col"><?= __('Modified') ?></th>
-            <th scope="col" class="actions"><?= __('Actions') ?></th>
+            <th scope="col"><?= __('Mon') ?></th>
+            <th scope="col"><?= __('Tue') ?></th>
+            <th scope="col"><?= __('Wed') ?></th>
+            <th scope="col"><?= __('Thu') ?></th>
+            <th scope="col"><?= __('Fri') ?></th>
+            <th scope="col"><?= __('Sat') ?></th>
+            <th scope="col"><?= __('Sun') ?></th>
         </tr>
-        <?php foreach ($room->showtimes as $showtime): ?>
-            <tr>                
-                <td><?= h($showtime->id) ?></td>
-                <td><?= h($showtime->movie_id) ?></td>
-                <td><?= h($showtime->room_id) ?></td>
-                <td><?= h($showtime->start) ?></td>
-                <td><?= h($showtime->end) ?></td>
-                <td><?= h($showtime->created) ?></td>
-                <td><?= h($showtime->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['controller' => 'Showtimes', 'action' => 'view', $showtime->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['controller' => 'Showtimes', 'action' => 'edit', $showtime->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['controller' => 'Showtimes', 'action' => 'delete', $showtime->id], ['confirm' => __('Are you sure you want to delete # {0}?', $showtime->id)]) ?>
-                </td>
-            </tr>
+        <?php foreach ($room->showtimes as $showtimes): ?>
+            <?php if($showtimes->start->format('D')=='Mon'):?>
+                <td><>
         <?php endforeach; ?>
     </table>
 <?php endif; ?>

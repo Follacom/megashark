@@ -38,8 +38,6 @@ class ShowtimesController extends AppController
      */
     public function view($id = null)
     {
-        $timenow = Time::now();
-        $timeweek = $timenow->modify('+1 week');
         $showtimes = TableRegistry::get('Articles');
         $showtime = $this->Showtimes->get($id, [
             'contain' => ['Movies', 'Rooms']
